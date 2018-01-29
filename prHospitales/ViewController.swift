@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -21,5 +22,20 @@ class ViewController: UIViewController {
     }
 
 
+    @IBAction func buttonHospital(_ sender: UIButton) {
+        nuevaVentana(tipo: 0);
+    }
+    
+    @IBAction func buttonAmbulatorio(_ sender: UIButton) {
+        nuevaVentana(tipo: 1);
+    }
+    
+    @IBAction func buttonUrgencias(_ sender: UIButton) {
+        nuevaVentana(tipo: 2);
+    }
+    
+    func nuevaVentana(tipo: Int){
+        print(tipo)
+    }
 }
 
