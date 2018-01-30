@@ -7,13 +7,26 @@
 //
 
 import UIKit
-
+import QuartzCore
 class ViewController: UIViewController {
 
+    @IBOutlet weak var buttonHospital: UIButton!
+    @IBOutlet weak var buttonAmbulatorio: UIButton!
+    @IBOutlet weak var buttonUrgencias: UIButton!
+    @IBOutlet weak var labelTitle: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("prueba")
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "fondo.jpg")!)
+        buttonHospital.layer.cornerRadius = 5
+        buttonAmbulatorio.layer.cornerRadius = 5
+        buttonUrgencias.layer.cornerRadius = 5
+        labelTitle.layer.masksToBounds = true
+        labelTitle.layer.cornerRadius = 5
+        labelTitle.clipsToBounds = true
+        labelTitle.layer.borderWidth = 2
+        labelTitle.textColor = UIColor.white
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
