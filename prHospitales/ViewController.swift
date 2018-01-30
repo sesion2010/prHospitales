@@ -49,7 +49,21 @@ class ViewController: UIViewController {
     }
     
     func nuevaVentana(tipo: Int){
+        let location = Location()
+        location.start()
         print(tipo)
+        let centrosFacade = CentrosFachada()
+        centrosFacade.loadItems() {(list) in
+            for poke in list {
+            
+                    let distancia = location.getDistance(lat2: Double(poke.lat), long2: Double(poke.long))
+                    print(String(distancia))
+                
+                //calcular 5 cercanos
+                //calcularDistancia(poke)
+            }
+        }
+        
     }
 }
 

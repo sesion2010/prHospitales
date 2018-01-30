@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		0CFBC43D2020C49B007104FF /* fondo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0CFBC43C2020C498007104FF /* fondo.jpg */; };
+		0CFBC43F2020CEC8007104FF /* HospitalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFBC43E2020CEC7007104FF /* HospitalTableViewCell.swift */; };
+		0CFBC4412020D8B5007104FF /* Centro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFBC4402020D8B5007104FF /* Centro.swift */; };
+		0CFBC4432020DDE0007104FF /* HospitalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFBC4422020DDE0007104FF /* HospitalTableViewController.swift */; };
+		0CFBC4452020E002007104FF /* CentrosFachada.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFBC4442020E002007104FF /* CentrosFachada.swift */; };
+		0CFBC4472020E67A007104FF /* CentroDistancia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFBC4462020E679007104FF /* CentroDistancia.swift */; };
+		0CFBC4492020F3ED007104FF /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFBC4482020F3ED007104FF /* Location.swift */; };
 		3CF301DF201F4C7E00377DA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF301DE201F4C7E00377DA2 /* AppDelegate.swift */; };
 		3CF301E1201F4C7E00377DA2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF301E0201F4C7E00377DA2 /* ViewController.swift */; };
 		3CF301E4201F4C7E00377DA2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CF301E2201F4C7E00377DA2 /* Main.storyboard */; };
@@ -36,6 +42,12 @@
 
 /* Begin PBXFileReference section */
 		0CFBC43C2020C498007104FF /* fondo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fondo.jpg; sourceTree = "<group>"; };
+		0CFBC43E2020CEC7007104FF /* HospitalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalTableViewCell.swift; sourceTree = "<group>"; };
+		0CFBC4402020D8B5007104FF /* Centro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Centro.swift; sourceTree = "<group>"; };
+		0CFBC4422020DDE0007104FF /* HospitalTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalTableViewController.swift; sourceTree = "<group>"; };
+		0CFBC4442020E002007104FF /* CentrosFachada.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentrosFachada.swift; sourceTree = "<group>"; };
+		0CFBC4462020E679007104FF /* CentroDistancia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentroDistancia.swift; sourceTree = "<group>"; };
+		0CFBC4482020F3ED007104FF /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		3CF301DB201F4C7E00377DA2 /* prHospitales.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = prHospitales.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CF301DE201F4C7E00377DA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3CF301E0201F4C7E00377DA2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +114,12 @@
 				0CFBC43C2020C498007104FF /* fondo.jpg */,
 				3CF301DE201F4C7E00377DA2 /* AppDelegate.swift */,
 				3CF301E0201F4C7E00377DA2 /* ViewController.swift */,
+				0CFBC43E2020CEC7007104FF /* HospitalTableViewCell.swift */,
+				0CFBC4482020F3ED007104FF /* Location.swift */,
+				0CFBC4402020D8B5007104FF /* Centro.swift */,
+				0CFBC4422020DDE0007104FF /* HospitalTableViewController.swift */,
+				0CFBC4442020E002007104FF /* CentrosFachada.swift */,
+				0CFBC4462020E679007104FF /* CentroDistancia.swift */,
 				3CF301E2201F4C7E00377DA2 /* Main.storyboard */,
 				3CF301E5201F4C7E00377DA2 /* Assets.xcassets */,
 				3CF301E7201F4C7E00377DA2 /* LaunchScreen.storyboard */,
@@ -264,7 +282,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CF301E1201F4C7E00377DA2 /* ViewController.swift in Sources */,
+				0CFBC4472020E67A007104FF /* CentroDistancia.swift in Sources */,
+				0CFBC4492020F3ED007104FF /* Location.swift in Sources */,
 				3CF301DF201F4C7E00377DA2 /* AppDelegate.swift in Sources */,
+				0CFBC4432020DDE0007104FF /* HospitalTableViewController.swift in Sources */,
+				0CFBC4452020E002007104FF /* CentrosFachada.swift in Sources */,
+				0CFBC4412020D8B5007104FF /* Centro.swift in Sources */,
+				0CFBC43F2020CEC8007104FF /* HospitalTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
