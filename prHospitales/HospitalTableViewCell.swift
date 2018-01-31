@@ -25,7 +25,9 @@ class HospitalTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    func initcell(title: String){
-        labelName.text! = title
+    func initcell(name: String, address: String, valoracion: String){
+        labelName.text! = name
+        labelAddress.text! = address
+        labelOpinion.text! = String("Valoración: " + valoracion + "/5")
     }
 }

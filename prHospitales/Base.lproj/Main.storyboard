@@ -24,7 +24,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ted-va-Npe">
-                                <rect key="frame" x="92.666666666666686" y="347" width="229" height="142"/>
+                                <rect key="frame" x="92.666666666666686" y="372" width="229" height="142"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J6j-KD-Ed2">
                                         <rect key="frame" x="0.0" y="0.0" width="229" height="34"/>
@@ -35,7 +35,6 @@
                                         </state>
                                         <connections>
                                             <action selector="buttonHospital:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8Ny-iO-qEM"/>
-                                            <segue destination="s5e-xe-1AH" kind="show" identifier="ShowCounterSegue" id="5nb-9V-RqO"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hAW-VJ-PTP">
@@ -47,7 +46,7 @@
                                         </state>
                                         <connections>
                                             <action selector="buttonAmbulatorio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wl7-CC-8eX"/>
-                                            <segue destination="s5e-xe-1AH" kind="show" identifier="ShowCounterSegue" id="RqU-EB-bTn"/>
+                                            <segue destination="s5e-xe-1AH" kind="show" identifier="nav" id="RqU-EB-bTn"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xlB-F8-mhk">
@@ -59,13 +58,12 @@
                                         </state>
                                         <connections>
                                             <action selector="buttonUrgencias:" destination="BYZ-38-t0r" eventType="touchUpInside" id="q0m-YO-z1S"/>
-                                            <segue destination="s5e-xe-1AH" kind="show" identifier="ShowCounterSegue" id="7bg-Vy-q13"/>
                                         </connections>
                                     </button>
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ClosestHealth" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mtl-6w-avU">
-                                <rect key="frame" x="131" y="203" width="152" height="32"/>
+                                <rect key="frame" x="131" y="223" width="152" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="24"/>
@@ -73,14 +71,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="JpO-3b-jV4">
-                                <rect key="frame" x="124" y="34" width="166" height="131"/>
+                                <rect key="frame" x="124" y="70" width="166" height="131"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ted-va-Npe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1bM-Pe-wfW"/>
-                            <constraint firstItem="ted-va-Npe" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="50" id="cNx-Lg-34a"/>
+                            <constraint firstItem="ted-va-Npe" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="75" id="1Zf-q7-Gb8"/>
+                            <constraint firstItem="ted-va-Npe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RUI-IP-gSE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -104,32 +102,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="90" id="EG4-oD-YZE" customClass="HospitalTableViewCell" customModule="prHospitales" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="celdaHospital" rowHeight="90" id="EG4-oD-YZE" customClass="HospitalTableViewCell" customModule="prHospitales" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EG4-oD-YZE" id="Mxm-1O-Chw">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="89.666666666666671"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1p4-5w-hdN">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hosp" translatesAutoresizingMaskIntoConstraints="NO" id="1p4-5w-hdN">
                                             <rect key="frame" x="20" y="-1" width="90" height="90"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4e-Q5-raY">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LabelName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4e-Q5-raY">
                                             <rect key="frame" x="118" y="11" width="276" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2yd-5b-mkR">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LabelDescr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2yd-5b-mkR">
                                             <rect key="frame" x="118" y="34" width="276" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ku9-GP-ein">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LabelOp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ku9-GP-ein">
                                             <rect key="frame" x="118" y="58" width="276" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -150,7 +148,13 @@
                             <outlet property="delegate" destination="gR5-ds-dPI" id="kdc-1O-yQ3"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Centros más cercanos" id="uzK-An-N3u"/>
+                    <navigationItem key="navigationItem" title="Centros más cercanos" id="uzK-An-N3u">
+                        <barButtonItem key="leftBarButtonItem" tag="7" title="Atrás" width="6" id="aSq-wb-p57">
+                            <connections>
+                                <action selector="buttonCancel:" destination="gR5-ds-dPI" id="JBu-zL-zm6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TvX-6s-cPi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -172,13 +176,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u7i-Xp-HHw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="840.57971014492762" y="32.608695652173914"/>
+            <point key="canvasLocation" x="945" y="373"/>
         </scene>
     </scenes>
     <resources>
         <image name="Logo" width="150" height="119"/>
+        <image name="hosp" width="256" height="256"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="7bg-Vy-q13"/>
-    </inferredMetricsTieBreakers>
 </document>

@@ -78,6 +78,7 @@ class CentrosFachada: NSObject {
      
                     let newCentro = Centro(ti: centroTipo, no: centroNombre, di: centroDireccion, lt: centroLat, lg: centroLong, v: centroValoracion, i: centroId)
                     self.items.append(newCentro!)
+                    print(newCentro?.nombre)
                 }
  
                 completion(self.items)

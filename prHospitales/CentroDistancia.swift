@@ -10,12 +10,12 @@ import UIKit
 
 class CentroDistancia: NSObject {
     
-    var distancia: Float
+    var distancia: Double
     var centro: Centro
     
-    init?(c: Centro, lat: Float, long: Float){
+    init?(c: Centro, distancia: Double){
         self.centro = c
-        self.distancia = long
+        self.distancia = distancia
         
     }
 
