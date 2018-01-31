@@ -62,6 +62,8 @@ class Location: NSObject,CLLocationManagerDelegate {
             break
         }
     }
+
+    
     
     
     
@@ -77,8 +79,8 @@ class Location: NSObject,CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
-        locationManager.stopUpdatingLocation()
+          print(error)
+          locationManager.stopUpdatingLocation()
     }
     
     

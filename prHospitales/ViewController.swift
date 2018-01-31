@@ -9,7 +9,7 @@
 import UIKit
 import QuartzCore
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var buttonHospital: UIButton!
     @IBOutlet weak var buttonAmbulatorio: UIButton!
     @IBOutlet weak var buttonUrgencias: UIButton!
@@ -30,13 +30,13 @@ class ViewController: UIViewController {
         
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
     @IBAction func buttonHospital(_ sender: UIButton) {
         nuevaVentana(tipo: 0) {
             DispatchQueue.main.async {
