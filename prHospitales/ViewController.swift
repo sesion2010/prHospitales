@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var buttonAmbulatorio: UIButton!
     @IBOutlet weak var buttonUrgencias: UIButton!
     @IBOutlet weak var labelTitle: UILabel!
+    let maxCentros = 5
     var listaCentros = [CentroDistancia]()
     var location = Location()
     
@@ -48,7 +49,9 @@ class ViewController: UIViewController {
     
     @IBAction func buttonAmbulatorio(_ sender: UIButton) {
         nuevaVentana(tipo: 1) {
-            self.performSegue(withIdentifier: "nav", sender: sender)
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "nav", sender: sender)
+            }
         }
        
     }
@@ -66,13 +69,22 @@ class ViewController: UIViewController {
             print(tipo)
             
             let centrosFacade = CentrosFachada()
+            
             centrosFacade.loadItems() {(list) in
                 print("calculo distancias")
+                self.listaCentros.removeAll()
                 for hosp in list {
                     let distancia = self.location.getDistance(lat2: Double(hosp.lat), long2: Double(hosp.long))
                     self.listaCentros.append(CentroDistancia(c: hosp,distancia: distancia)!)
                     self.listaCentros.sort(by: { (this, that) in return (this.distancia < that.distancia) } )
                     print(String(distancia))
+                    var elements = self.listaCentros.count
+                    if(elements >= self.maxCentros){
+                        elements = self.maxCentros
+                    }
+                    let listaReducida = Array(self.listaCentros[0..<elements])
+                    self.listaCentros.removeAll()
+                    self.listaCentros = listaReducida
                 }
                 completion()
             }
@@ -86,6 +98,7 @@ class ViewController: UIViewController {
 
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == "nav"{
             guard let navViewController = segue.destination as? UINavigationController else {
                 fatalError("Unexpected Error \(segue.destination)")
@@ -93,16 +106,10 @@ class ViewController: UIViewController {
             guard let hospitalViewController = navViewController.viewControllers.first as? HospitalTableViewController else{
                 fatalError("Unexpected Erro_estination)")
             }
-            print("Send")
-           // DispatchQueue.main.async { // Correct
-            //    sleep(5)
-                var centros = [Centro]()
-                /*for item in self.listaCentros{
-                    centros.append(item.centro)
-                }*/
-                hospitalViewController.listaCentros = self.listaCentros
-                //hospitalViewController.centros = centros
-                //hospitalViewController.prueba = "adios"
+            print("a")
+            print(listaCentros.description)
+            hospitalViewController.listaCentros = self.listaCentros
+            
             }
         }
         

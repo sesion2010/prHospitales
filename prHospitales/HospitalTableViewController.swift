@@ -11,12 +11,10 @@ import UIKit
 class HospitalTableViewController: UITableViewController {
 
     var listaCentros = [CentroDistancia]()
-    var centros = [Centro]()
     var prueba: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         print(listaCentros.description)
-        print(centros.description)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -53,8 +51,9 @@ class HospitalTableViewController: UITableViewController {
         
         // Fetches the appropriate meal for the data source layout.
         let centro = listaCentros[indexPath.row]
-        //let prueba = centros[indexPath.row]
-        cell.initcell(name: centro.centro.nombre,address: String(centro.centro.direccion + " a " + String(centro.distancia) + " metros"),valoracion: String(centro.centro.val))
+        let nombre = String(centro.distancia).split(separator: ".")[0]
+        
+        cell.initcell(name: centro.centro.nombre,address: String(centro.centro.direccion + " a " + nombre + " m"),valoracion: String(centro.centro.val))
         
         /*let meal = meals[indexPath.row]
         
