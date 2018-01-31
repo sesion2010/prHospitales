@@ -11,12 +11,10 @@ import UIKit
 class HospitalTableViewController: UITableViewController {
 
     var listaCentros = [CentroDistancia]()
-    var centros = [Centro]()
     var prueba: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         print(listaCentros.description)
-        print(centros.description)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

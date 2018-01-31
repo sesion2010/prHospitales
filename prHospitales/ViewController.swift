@@ -85,23 +85,18 @@ class ViewController: UIViewController {
 
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == "nav"{
             guard let navViewController = segue.destination as? UINavigationController else {
                 fatalError("Unexpected Error \(segue.destination)")
             }
             guard let hospitalViewController = navViewController.viewControllers.first as? HospitalTableViewController else{
-                 fatalError("Unexpected Error \(segue.destination)")
+                fatalError("Unexpected Erro_estination)")
             }
-            print("Send")
-           // DispatchQueue.main.async { // Correct
-            //    sleep(5)
-                var centros = [Centro]()
-                /*for item in self.listaCentros{
-                    centros.append(item.centro)
-                }*/
-                hospitalViewController.listaCentros = self.listaCentros
-                //hospitalViewController.centros = centros
-                //hospitalViewController.prueba = "adios"
+            print("a")
+            print(listaCentros.description)
+            hospitalViewController.listaCentros = self.listaCentros
+            
             }
         }
         
