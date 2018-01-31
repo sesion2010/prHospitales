@@ -20,13 +20,13 @@ class Location: NSObject,CLLocationManagerDelegate {
     
     
     /*
-     override init() {
+    override init() {
      
      
-     super.init()
-     locationManager.delegate = self
-     }
-     */
+        super.init()
+        locationManager.delegate = self
+    }
+*/
     func configureLocations(completion: @escaping () -> Void) {
         locationManager = CLLocationManager()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -51,7 +51,7 @@ class Location: NSObject,CLLocationManagerDelegate {
         case .restricted:
             // restricted by e.g. parental controls. User can't enable Location Services
             print("Permisos restringidos")
-            
+        
             break
         case .denied:
             // user denied your app access to Location Services, but can grant access from Settings.app
@@ -63,7 +63,6 @@ class Location: NSObject,CLLocationManagerDelegate {
         }
     }
 
-    
     
     
     

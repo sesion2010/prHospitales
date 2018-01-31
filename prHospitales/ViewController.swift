@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var labelTitle: UILabel!
     var listaCentros = [CentroDistancia]()
     var location = Location()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "fondo.jpeg")!)
@@ -79,6 +80,10 @@ class ViewController: UIViewController {
         }
         
     }
+    func sorterForDistancia(this:CentroDistancia, that:CentroDistancia) -> Bool {
+        return (this.distancia < that.distancia)
+    }
+}
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "nav"{
