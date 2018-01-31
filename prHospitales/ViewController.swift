@@ -14,10 +14,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var buttonAmbulatorio: UIButton!
     @IBOutlet weak var buttonUrgencias: UIButton!
     @IBOutlet weak var labelTitle: UILabel!
-    
+    var listaCentros = [CentroDistancia]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "fondo.jpg")!)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "fondo.jpeg")!)
         buttonHospital.layer.cornerRadius = 5
         buttonAmbulatorio.layer.cornerRadius = 5
         buttonUrgencias.layer.cornerRadius = 5
@@ -55,15 +55,30 @@ class ViewController: UIViewController {
         let centrosFacade = CentrosFachada()
         centrosFacade.loadItems() {(list) in
             for poke in list {
-            
-                    let distancia = location.getDistance(lat2: Double(poke.lat), long2: Double(poke.long))
-                    print(String(distancia))
+                self.listaCentros.append(CentroDistancia(c: poke,lat: 25,long: 25)!)
+                //let distancia = location.getDistance(lat2: Double(poke.lat), long2: Double(poke.long))
+                //print(String(distancia))
                 
                 //calcular 5 cercanos
                 //calcularDistancia(poke)
             }
         }
+        //segue
         
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowCounterSegue"
+        {
+            if let destinationVC = segue.destination as? HospitalTableViewController {
+                var centros = [Centro]()
+                for item in listaCentros{
+                    centros.append(item.centro)
+                }
+                destinationVC.centros = centros
+                destinationVC.prueba = "hola"
+            }
+        }
+    }
+    
 }
 

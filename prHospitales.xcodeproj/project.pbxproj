@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0CFBC43D2020C49B007104FF /* fondo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0CFBC43C2020C498007104FF /* fondo.jpg */; };
+		0C31C2FA2021C87700DD9779 /* fondo.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0C31C2F92021C87600DD9779 /* fondo.jpeg */; };
 		0CFBC43F2020CEC8007104FF /* HospitalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFBC43E2020CEC7007104FF /* HospitalTableViewCell.swift */; };
 		0CFBC4412020D8B5007104FF /* Centro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFBC4402020D8B5007104FF /* Centro.swift */; };
 		0CFBC4432020DDE0007104FF /* HospitalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFBC4422020DDE0007104FF /* HospitalTableViewController.swift */; };
@@ -41,7 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0CFBC43C2020C498007104FF /* fondo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fondo.jpg; sourceTree = "<group>"; };
+		0C31C2F92021C87600DD9779 /* fondo.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fondo.jpeg; sourceTree = "<group>"; };
 		0CFBC43E2020CEC7007104FF /* HospitalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalTableViewCell.swift; sourceTree = "<group>"; };
 		0CFBC4402020D8B5007104FF /* Centro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Centro.swift; sourceTree = "<group>"; };
 		0CFBC4422020DDE0007104FF /* HospitalTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalTableViewController.swift; sourceTree = "<group>"; };
@@ -111,10 +111,10 @@
 		3CF301DD201F4C7E00377DA2 /* prHospitales */ = {
 			isa = PBXGroup;
 			children = (
-				0CFBC43C2020C498007104FF /* fondo.jpg */,
 				3CF301DE201F4C7E00377DA2 /* AppDelegate.swift */,
 				3CF301E0201F4C7E00377DA2 /* ViewController.swift */,
 				0CFBC43E2020CEC7007104FF /* HospitalTableViewCell.swift */,
+				0C31C2F92021C87600DD9779 /* fondo.jpeg */,
 				0CFBC4482020F3ED007104FF /* Location.swift */,
 				0CFBC4402020D8B5007104FF /* Centro.swift */,
 				0CFBC4422020DDE0007104FF /* HospitalTableViewController.swift */,
@@ -253,9 +253,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C31C2FA2021C87700DD9779 /* fondo.jpeg in Resources */,
 				3CF301E9201F4C7E00377DA2 /* LaunchScreen.storyboard in Resources */,
 				3CF301E6201F4C7E00377DA2 /* Assets.xcassets in Resources */,
-				0CFBC43D2020C49B007104FF /* fondo.jpg in Resources */,
 				3CF301E4201F4C7E00377DA2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
