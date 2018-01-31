@@ -14,7 +14,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var buttonAmbulatorio: UIButton!
     @IBOutlet weak var buttonUrgencias: UIButton!
     @IBOutlet weak var labelTitle: UILabel!
-    var listaCentros
+    let maxCentros = 5
+    var listaCentros = [CentroDistancia]()
     var location = Location()
     
     override func viewDidLoad() {
@@ -85,18 +86,23 @@ class ViewController: UIViewController {
 
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == "nav"{
             guard let navViewController = segue.destination as? UINavigationController else {
                 fatalError("Unexpected Error \(segue.destination)")
             }
             guard let hospitalViewController = navViewController.viewControllers.first as? HospitalTableViewController else{
-                fatalError("Unexpected Erro_estination)")
+                 fatalError("Unexpected Error \(segue.destination)")
             }
-            print("a")
-            print(listaCentros.description)
-            hospitalViewController.listaCentros = self.listaCentros
-            
+            print("Send")
+           // DispatchQueue.main.async { // Correct
+            //    sleep(5)
+                var centros = [Centro]()
+                /*for item in self.listaCentros{
+                    centros.append(item.centro)
+                }*/
+                hospitalViewController.listaCentros = self.listaCentros
+                //hospitalViewController.centros = centros
+                //hospitalViewController.prueba = "adios"
             }
         }
         
