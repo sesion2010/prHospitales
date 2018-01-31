@@ -16,6 +16,7 @@ class Centro{
     var long: Float
     var val: Float
     var id: Int
+    var distancia: Double!
     
     init?(ti: String, no: String, di: String, lt: Float, lg: Float, v: Float, i: Int){
         self.tipo = ti
@@ -26,5 +27,7 @@ class Centro{
         self.val = v
         self.id = i
     }
+    
+    
     
 }

@@ -9,11 +9,12 @@
 import UIKit
 import QuartzCore
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var buttonHospital: UIButton!
     @IBOutlet weak var buttonAmbulatorio: UIButton!
     @IBOutlet weak var buttonUrgencias: UIButton!
     @IBOutlet weak var labelTitle: UILabel!
+    var location = Location()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,13 +30,13 @@ class ViewController: UIViewController {
         
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
     @IBAction func buttonHospital(_ sender: UIButton) {
         nuevaVentana(tipo: 0);
     }
@@ -45,25 +46,28 @@ class ViewController: UIViewController {
     }
     
     @IBAction func buttonUrgencias(_ sender: UIButton) {
-        nuevaVentana(tipo: 2);
-    }
+        nuevaVentana(tipo: 2)    }
     
     func nuevaVentana(tipo: Int){
-        let location = Location()
-        location.start()
-        print(tipo)
-        let centrosFacade = CentrosFachada()
-        centrosFacade.loadItems() {(list) in
-            for poke in list {
-            
-                    let distancia = location.getDistance(lat2: Double(poke.lat), long2: Double(poke.long))
+        location.configureLocations(){ () in
+            print(tipo)
+            var centros :[CentroDistancia] = []
+            let centrosFacade = CentrosFachada()
+            centrosFacade.loadItems() {(list) in
+                print("calculo distancias")
+                for poke in list {
+                    let distancia = self.location.getDistance(lat2: Double(poke.lat), long2: Double(poke.long))
+                    poke.distancia = distancia
+                    centros.append(CentroDistancia(c: poke,distancia: distancia)!)
+                    centros.sort(by:self.sorterForDistancia)
                     print(String(distancia))
-                
-                //calcular 5 cercanos
-                //calcularDistancia(poke)
+                }
             }
         }
         
+    }
+    func sorterForDistancia(this:CentroDistancia, that:CentroDistancia) -> Bool {
+        return (this.distancia < that.distancia)
     }
 }
 
