@@ -10,9 +10,33 @@ import UIKit
 
 class CentrosFachada: NSObject {
     
-    var items = [Centro]()
+    var allItems = [Centro]()
+    var listaCentros = [CentroDistancia]()
+
     
-    func loadItems(completion: @escaping (_ list: [Centro]) -> Void){
+    
+    
+    
+    func loadItemsAll(location :Location){
+        if(false){//TODO: Data in Iphone
+            
+        }else{//Data no in Iphone
+            self.loadItemsServer()
+            
+        }
+        
+        location.configureLocations {
+            print("calculo distancias")
+            for hosp in self.allItems {
+                let distancia = location.getDistance(lat2: Double(hosp.lat), long2: Double(hosp.long))
+                self.listaCentros.append(CentroDistancia(c: hosp,distancia: distancia)!)
+                self.listaCentros.sort(by: { (this, that) in return (this.distancia < that.distancia) } )
+                print(String(distancia))
+            }
+        }
+    }
+    
+    private func loadItemsServer(){
         print("Entra en loadItems")
         //let todoEndpoint: String = "https://pokeapi.co/api/v2/pokemon"
         //http://192.168.183.43:8080/hospital/webresources/entity.hospital/bytype/Hospital
@@ -46,7 +70,7 @@ class CentrosFachada: NSObject {
                     return
                 }
                 for item in listaCentros{
-                
+                    
                     guard let centroTipo = item["tipo"] as? String else {
                         print("Could not get todo title from JSON")
                         return
@@ -75,19 +99,16 @@ class CentrosFachada: NSObject {
                         print("Could not get todo title from JSON")
                         return
                     }
-     
+                    
                     let newCentro = Centro(ti: centroTipo, no: centroNombre, di: centroDireccion, lt: centroLat, lg: centroLong, v: centroValoracion, i: centroId)
-                    self.items.append(newCentro!)
+                    self.allItems.append(newCentro!)
                     print(newCentro?.nombre)
                 }
- 
-                completion(self.items)
             } catch  {
                 print("error trying to convert data to JSON")
                 return
             }
         }
         task.resume()
-        
     }
 }
