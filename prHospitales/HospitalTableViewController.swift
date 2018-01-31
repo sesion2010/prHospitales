@@ -54,7 +54,7 @@ class HospitalTableViewController: UITableViewController {
         // Fetches the appropriate meal for the data source layout.
         let centro = listaCentros[indexPath.row]
         //let prueba = centros[indexPath.row]
-        cell.initcell(name: prueba,address: String(centro.centro.direccion + " a " + String(centro.distancia) + " metros"),valoracion: String(centro.centro.val))
+        cell.initcell(name: centro.centro.nombre,address: String(centro.centro.direccion + " a " + String(centro.distancia) + " metros"),valoracion: String(centro.centro.val))
         
         /*let meal = meals[indexPath.row]
         

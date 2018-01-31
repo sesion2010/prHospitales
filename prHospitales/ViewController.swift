@@ -64,14 +64,14 @@ class ViewController: UIViewController {
     func nuevaVentana(tipo: Int,completion: @escaping () -> Void){
         location.configureLocations(){ () in
             print(tipo)
-            var centros :[CentroDistancia] = []
+            
             let centrosFacade = CentrosFachada()
             centrosFacade.loadItems() {(list) in
                 print("calculo distancias")
                 for hosp in list {
                     let distancia = self.location.getDistance(lat2: Double(hosp.lat), long2: Double(hosp.long))
-                    centros.append(CentroDistancia(c: hosp,distancia: distancia)!)
-                    centros.sort(by: { (this, that) in return (this.distancia < that.distancia) } )
+                    self.listaCentros.append(CentroDistancia(c: hosp,distancia: distancia)!)
+                    self.listaCentros.sort(by: { (this, that) in return (this.distancia < that.distancia) } )
                     print(String(distancia))
                 }
                 completion()
@@ -83,7 +83,7 @@ class ViewController: UIViewController {
     func sorterForDistancia(this:CentroDistancia, that:CentroDistancia) -> Bool {
         return (this.distancia < that.distancia)
     }
-}
+
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "nav"{
@@ -91,7 +91,7 @@ class ViewController: UIViewController {
                 fatalError("Unexpected Error \(segue.destination)")
             }
             guard let hospitalViewController = navViewController.viewControllers.first as? HospitalTableViewController else{
-                 fatalError("Unexpected Error \(segue.destination)")
+                fatalError("Unexpected Erro_estination)")
             }
             print("Send")
            // DispatchQueue.main.async { // Correct
