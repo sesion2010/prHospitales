@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     let maxCentros = 5
     var listaCentros = [CentroDistancia]()
     var location = Location()
+    let centrosFachada = CentrosFachada()
+    var tipoCentro = AppDelegate.TipoCentro.self
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +31,8 @@ class ViewController: UIViewController {
         labelTitle.clipsToBounds = true
         labelTitle.layer.borderWidth = 2
         labelTitle.textColor = UIColor.white
-        
         // Do any additional setup after loading the view, typically from a nib.
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,17 +42,9 @@ class ViewController: UIViewController {
     
     
     @IBAction func buttonHospital(_ sender: UIButton) {
-        
-        centrosFachada.buscarCentrosCercanos(tipo: 0)
-        { (aListaCentros) in
-            listaCentros = aListaCentros
-            DispatchQueue.main.async {
-                self.performSegue(withIdentifier: "nav", sender: sender)
-            }
-        }
-        
-        
-        nuevaVentana(tipo: 0) {
+        self.listaCentros.removeAll()
+        centrosFachada.buscarCentrosCercanos(location:self.location,tipoCentro: String(describing: self.tipoCentro.Hospital)){ (aListaCentros) in
+            self.listaCentros = aListaCentros
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "nav", sender: sender)
             }
@@ -58,32 +52,26 @@ class ViewController: UIViewController {
     }
     
     @IBAction func buttonAmbulatorio(_ sender: UIButton) {
-        nuevaVentana(tipo: 1) {
+        self.listaCentros.removeAll()
+        centrosFachada.buscarCentrosCercanos(location:self.location,tipoCentro: String(describing: self.tipoCentro.Ambulatorio)){ (aListaCentros) in
+            self.listaCentros = aListaCentros
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "nav", sender: sender)
             }
         }
-       
     }
     
     @IBAction func buttonUrgencias(_ sender: UIButton) {
-        nuevaVentana(tipo: 2) {
-             DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "nav", sender: sender)
+        self.listaCentros.removeAll()
+        centrosFachada.buscarCentrosCercanos(location:self.location,tipoCentro: String(describing: self.tipoCentro.Urgencias)){ (aListaCentros) in
+            self.listaCentros = aListaCentros
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "nav", sender: sender)
             }
         }
     }
     
-    func nuevaVentana(tipo: Int,completion: @escaping () -> Void){
-        //location.configureLocations(){ () in
-            print(tipo)
-            let centrosFacade = CentrosFachada()
-            centrosFacade.loadItemsAll(location:self.location)
-            completion()
-        //}
-        
-    }
-
+  
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "nav"{
@@ -94,15 +82,9 @@ class ViewController: UIViewController {
                  fatalError("Unexpected Error \(segue.destination)")
             }
             print("Send")
-           // DispatchQueue.main.async { // Correct
-            //    sleep(5)
-                var centros = [Centro]()
-                /*for item in self.listaCentros{
-                    centros.append(item.centro)
-                }*/
+                hospitalViewController.listaCentros.removeAll()
+            print("Tamaño hospitalViewController : " + String(hospitalViewController.listaCentros.count))
                 hospitalViewController.listaCentros = self.listaCentros
-                //hospitalViewController.centros = centros
-                //hospitalViewController.prueba = "adios"
             }
         }
         
