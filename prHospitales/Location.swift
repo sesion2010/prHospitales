@@ -28,12 +28,22 @@ class Location: NSObject,CLLocationManagerDelegate {
     }
 */
     func configureLocations(completion: @escaping () -> Void) {
-        locationManager = CLLocationManager()
+        DispatchQueue.main.async{
+            self.locationManager = CLLocationManager()
+            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            self.locationManager.distanceFilter = kCLDistanceFilterNone
+            self.locationManager.delegate = self
+            self.locationManager.requestLocation()
+            self.completionHandler = completion
+        }
+        /*
+        self.locationManager = CLLocationManager()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.distanceFilter = kCLDistanceFilterNone
         locationManager.delegate = self
         locationManager.requestLocation()
         self.completionHandler = completion
+        */
         
     }
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -78,8 +88,9 @@ class Location: NSObject,CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-          print(error)
+         /* print(error)
           locationManager.stopUpdatingLocation()
+         */
     }
     
     

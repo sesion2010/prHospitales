@@ -23,9 +23,16 @@ class CentrosFachada: NSObject {
         self.allItems.removeAll()
         if(false){//TODO: Data in Iphone
             
+              //llamo funcion
+              self.calcularDistancias(location: location, devolverLista:devolverLista)
         }else{//Data no in Iphone
-            self.loadItemsServer(tipoCentro: tipoCentro)
+            self.loadItemsServer(tipoCentro: tipoCentro){
+                 self.calcularDistancias(location: location, devolverLista:devolverLista)
+            }
         }
+    }
+    
+    private func calcularDistancias(location :Location,devolverLista: @escaping ([CentroDistancia]) -> Void){
         location.configureLocations {
             for hosp in self.allItems {
                 let distancia = location.getDistance(lat2: Double(hosp.lat), long2: Double(hosp.long))
@@ -40,9 +47,10 @@ class CentrosFachada: NSObject {
             self.listaCentros = Array(self.listaCentros[0..<elements])
             devolverLista(self.listaCentros)
         }
+
     }
     
-    private func loadItemsServer(tipoCentro :String){
+    private func loadItemsServer(tipoCentro :String, obtenerDistancias: @escaping () -> Void){
         //let todoEndpoint: String = "https://pokeapi.co/api/v2/pokemon"
         //http://192.168.183.43:8080/hospital/webresources/entity.hospital/bytype/Hospital
         let todoEndpoint: String = "http://192.168.183.43:8080/hospital/webresources/entity.hospital/bytype/" + tipoCentro
@@ -109,6 +117,7 @@ class CentrosFachada: NSObject {
                     self.allItems.append(newCentro!)
                     print(newCentro?.nombre)
                 }
+                obtenerDistancias()
             } catch  {
                 print("error trying to convert data to JSON")
                 return

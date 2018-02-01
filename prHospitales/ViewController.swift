@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         labelTitle.layer.borderWidth = 2
         labelTitle.textColor = UIColor.white
         // Do any additional setup after loading the view, typically from a nib.
-
+        
     }
     
     override func didReceiveMemoryWarning() {
