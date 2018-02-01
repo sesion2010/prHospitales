@@ -68,8 +68,7 @@ class Location: NSObject,CLLocationManagerDelegate {
             
             print("Permisos denegados")
             break
-        default:
-            break
+       
         }
     }
 

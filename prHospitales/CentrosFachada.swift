@@ -115,7 +115,6 @@ class CentrosFachada: NSObject {
                     
                     let newCentro = Centro(ti: centroTipo, no: centroNombre, di: centroDireccion, lt: centroLat, lg: centroLong, v: centroValoracion, i: centroId)
                     self.allItems.append(newCentro!)
-                    print(newCentro?.nombre)
                 }
                 obtenerDistancias()
             } catch  {
