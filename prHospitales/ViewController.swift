@@ -31,6 +31,7 @@ class ViewController: UIViewController {
         labelTitle.clipsToBounds = true
         labelTitle.layer.borderWidth = 2
         labelTitle.textColor = UIColor.white
+        location.mostrarPopUp = self.mostrarPopUpActivarPermisos
         // Do any additional setup after loading the view, typically from a nib.
         
     }
@@ -90,8 +91,20 @@ class ViewController: UIViewController {
                 hospitalViewController.listaCentros = self.listaCentros
             }
         }
-        
+    
+    func mostrarPopUpActivarPermisos(){
+    let alert = UIAlertController(title: "Permisos Denegados", message: "Por favor, vaya a ajustes y active los permisos necesarios para el uso de la aplicación", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
+            switch action.style{
+            case .default:
+                print("default")
+            case .cancel:
+                print("cancel")
+            case .destructive:
+                print("destructive")
+            }}))
+        self.present(alert, animated: true, completion: nil)
     }
     
-
+}
 

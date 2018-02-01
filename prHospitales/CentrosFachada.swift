@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import os.log
+
 
 class CentrosFachada: NSObject {
     
@@ -14,31 +16,33 @@ class CentrosFachada: NSObject {
     var listaCentros = [CentroDistancia]()
     let MaximoElementos = 5
 
-    
-    
-    
-    
     func buscarCentrosCercanos(location :Location,tipoCentro:  String,devolverLista: @escaping ([CentroDistancia]) -> Void){
         self.listaCentros.removeAll()
         self.allItems.removeAll()
-        if(false){//TODO: Data in Iphone
-            
-              //llamo funcion
-              self.calcularDistancias(location: location, devolverLista:devolverLista)
-        }else{//Data no in Iphone
+        if let centrosGuardados = cargarCentros(){
+            for item in centrosGuardados {
+                if(item.tipo == tipoCentro){
+                    allItems.append(item)
+                }
+            }
+            self.calcularDistancias(tipo: tipoCentro, location: location, devolverLista:devolverLista)
+        }else{
             self.loadItemsServer(tipoCentro: tipoCentro){
-                 self.calcularDistancias(location: location, devolverLista:devolverLista)
+                self.calcularDistancias(tipo: tipoCentro,location: location, devolverLista:devolverLista)
             }
         }
     }
     
-    private func calcularDistancias(location :Location,devolverLista: @escaping ([CentroDistancia]) -> Void){
-        location.configureLocations {
+    
+    private func calcularDistancias(tipo: String, location :Location,devolverLista: @escaping ([CentroDistancia]) -> Void){
+        location.requestLocation{
             for hosp in self.allItems {
-                let distancia = location.getDistance(lat2: Double(hosp.lat), long2: Double(hosp.long))
-                self.listaCentros.append(CentroDistancia(c: hosp,distancia: distancia)!)
-                self.listaCentros.sort(by: { (this, that) in return (this.distancia < that.distancia) } )
-                print(String(distancia))
+                if(hosp.tipo == tipo){
+                    let distancia = location.getDistance(lat2: Double(hosp.lat), long2: Double(hosp.long))
+                    self.listaCentros.append(CentroDistancia(c: hosp,distancia: distancia)!)
+                    self.listaCentros.sort(by: { (this, that) in return (this.distancia < that.distancia) } )
+                    print(String(distancia))
+                }
             }
             var elements = self.listaCentros.count
             if(elements >= self.MaximoElementos){
@@ -47,12 +51,11 @@ class CentrosFachada: NSObject {
             self.listaCentros = Array(self.listaCentros[0..<elements])
             devolverLista(self.listaCentros)
         }
-
+        
     }
     
     private func loadItemsServer(tipoCentro :String, obtenerDistancias: @escaping () -> Void){
-        //let todoEndpoint: String = "https://pokeapi.co/api/v2/pokemon"
-        //http://192.168.183.43:8080/hospital/webresources/entity.hospital/bytype/Hospital
+       
         let todoEndpoint: String = "http://192.168.183.43:8080/hospital/webresources/entity.hospital/bytype/" + tipoCentro
         guard let url = URL(string: todoEndpoint) else{
             print("Error: cannot create URL")
@@ -123,5 +126,19 @@ class CentrosFachada: NSObject {
             }
         }
         task.resume()
+    }
+    
+    //Persistencia
+    private func guardarCentro() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(allItems, toFile: Centro.ArchiveURL.path)
+        if isSuccessfulSave {
+            os_log("Centers successfully saved.", log: OSLog.default, type: .debug)
+        } else {
+            os_log("Failed to save centers...", log: OSLog.default, type: .error)
+        }
+    }
+    
+    private func cargarCentros() -> [Centro]?  {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Centro.ArchiveURL.path) as? [Centro]
     }
 }

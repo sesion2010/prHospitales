@@ -32,13 +32,13 @@ class Centro: NSObject, NSCoding{
         
         let nombre = aDecoder.decodeObject(forKey: PropertyKey.nombre) as? String
         let direccion = aDecoder.decodeObject(forKey: PropertyKey.direccion) as? String
-        let lat = aDecoder.decodeObject(forKey: PropertyKey.lat) as? Float
-        let long = aDecoder.decodeObject(forKey: PropertyKey.long) as? Float
-        let val = aDecoder.decodeObject(forKey: PropertyKey.val) as? Float
-        let id = aDecoder.decodeObject(forKey: PropertyKey.id) as? Int
+        let lat = aDecoder.decodeFloat(forKey:  PropertyKey.lat)
+        let long = aDecoder.decodeFloat(forKey:  PropertyKey.long)
+        let val = aDecoder.decodeFloat(forKey: PropertyKey.val)
+        let id = aDecoder.decodeInteger(forKey: PropertyKey.id)
         
         // Must call designated initializer.
-        self.init(ti: tipo,no:nombre!,di:direccion!,lt:lat!,lg:long!,v:val!, i: id! )
+        self.init(ti: tipo, no:nombre!, di: direccion!, lt:lat, lg:long, v:val, i: id )
     }
     
     var tipo: String
