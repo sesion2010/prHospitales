@@ -74,6 +74,7 @@ class ViewController: UIViewController {
   
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == "nav"{
             guard let navViewController = segue.destination as? UINavigationController else {
                 fatalError("Unexpected Error \(segue.destination)")
@@ -81,9 +82,11 @@ class ViewController: UIViewController {
             guard let hospitalViewController = navViewController.viewControllers.first as? HospitalTableViewController else{
                  fatalError("Unexpected Error \(segue.destination)")
             }
+ 
             print("Send")
                 hospitalViewController.listaCentros.removeAll()
             print("Tamaño hospitalViewController : " + String(hospitalViewController.listaCentros.count))
+            print("Tamaño del  listaCentros: " + String(self.listaCentros.count))
                 hospitalViewController.listaCentros = self.listaCentros
             }
         }

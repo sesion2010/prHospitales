@@ -46,7 +46,7 @@ class HospitalTableViewController: UITableViewController {
         let cellIdentifier = "celdaHospital"
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? HospitalTableViewCell  else {
-            fatalError("The dequeued cell is not an instance of MealTableViewCell.")
+            fatalError("The dequeued cell is not an instance of HospitalTableViewCell.")
         }
         
         // Fetches the appropriate meal for the data source layout.

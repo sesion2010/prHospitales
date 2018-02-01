@@ -46,7 +46,6 @@
                                         </state>
                                         <connections>
                                             <action selector="buttonAmbulatorio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wl7-CC-8eX"/>
-                                            <segue destination="s5e-xe-1AH" kind="show" identifier="nav" id="RqU-EB-bTn"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xlB-F8-mhk">
@@ -87,6 +86,7 @@
                         <outlet property="buttonHospital" destination="J6j-KD-Ed2" id="PHr-0Z-NU3"/>
                         <outlet property="buttonUrgencias" destination="xlB-F8-mhk" id="A8a-tT-mGG"/>
                         <outlet property="labelTitle" destination="mtl-6w-avU" id="Ech-x0-EGZ"/>
+                        <segue destination="s5e-xe-1AH" kind="show" identifier="nav" id="Bny-Hh-CzK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
