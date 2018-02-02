@@ -17,17 +17,12 @@ class Location: NSObject,CLLocationManagerDelegate {
     var locationManager : CLLocationManager!
     var distanciasHandler: ()->Void = {}
     var mostrarPopUp: ()->Void = {}
+    static let instancia = Location()
     
-    
-    
-    /*
-     override init() {
-     
-     
-     super.init()
-     locationManager.delegate = self
+     private override init() {
+        
      }
-     */
+ 
     func requestLocation(calcularDistanciasAcentros: @escaping () -> Void) {
         DispatchQueue.main.async{
             self.locationManager = CLLocationManager()
@@ -37,31 +32,23 @@ class Location: NSObject,CLLocationManagerDelegate {
             self.distanciasHandler = calcularDistanciasAcentros
             self.enableLocationServices(status: CLLocationManager.authorizationStatus())
         }
-        
     }
     
     func enableLocationServices(status: CLAuthorizationStatus) {
-        
         switch status {
-        case .notDetermined:
-            locationManager.requestAlwaysAuthorization()
-            break
-        case .authorizedWhenInUse:
-            locationManager.requestLocation()
-            break
-        case .authorizedAlways:
-            locationManager.requestLocation()
-            break
-        case .restricted:
-            // restricted by e.g. parental controls. User can't enable Location Services
-            print("Permisos restringidos")
-            
-            break
-        case .denied:
-            print("Denegados")
-            self.mostrarPopUp()
-            // user denied your app access to Location Services, but can grant access from Settings.app
-            break
+            case .notDetermined:
+                locationManager.requestAlwaysAuthorization()
+                break
+            case .authorizedWhenInUse:
+                locationManager.requestLocation()
+                break
+            case .authorizedAlways:
+                locationManager.requestLocation()
+                break
+            default:
+                print("Permisos restringidos")
+                mostrarPopUp()
+                break
         }
     }
     
@@ -69,9 +56,6 @@ class Location: NSObject,CLLocationManagerDelegate {
         print("Entro en manejador de permisos")
         enableLocationServices(status: status)
     }
-    
-    
-    
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let mostRecentLocation = locations.last  {

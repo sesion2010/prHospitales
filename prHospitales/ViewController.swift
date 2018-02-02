@@ -16,7 +16,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var labelTitle: UILabel!
     let maxCentros = 5
     var listaCentros = [CentroDistancia]()
-    var location = Location()
+    var location = Location.instancia
     let centrosFachada = CentrosFachada()
     var tipoCentro = AppDelegate.TipoCentro.self
     
@@ -71,8 +71,6 @@ class ViewController: UIViewController {
             }
         }
     }
-    
-  
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -83,24 +81,14 @@ class ViewController: UIViewController {
             guard let hospitalViewController = navViewController.viewControllers.first as? HospitalTableViewController else{
                  fatalError("Unexpected Error \(segue.destination)")
             }
- 
-            print("Send")
-                hospitalViewController.listaCentros.removeAll()
-                hospitalViewController.listaCentros = self.listaCentros
-            }
+            hospitalViewController.listaCentros.removeAll()
+            hospitalViewController.listaCentros = self.listaCentros
         }
+    }
     
     func mostrarPopUpActivarPermisos(){
-    let alert = UIAlertController(title: "Permisos Denegados", message: "Por favor, vaya a ajustes y active los permisos necesarios para el uso de la aplicación", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
-            switch action.style{
-            case .default:
-                print("default")
-            case .cancel:
-                print("cancel")
-            case .destructive:
-                print("destructive")
-            }}))
+        let alert = UIAlertController(title: "Permisos Denegados", message: "Por favor, vaya a ajustes y active los permisos necesarios para el uso de la aplicación", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
         self.present(alert, animated: true, completion: nil)
     }
     
