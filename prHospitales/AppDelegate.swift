@@ -34,7 +34,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
+        /*
+       print( self.window?.rootViewController?.topMostViewController())
+        if self.window?.rootViewController?.topMostViewController() is HospitalTableViewController {
+            print ("Actualizar vista")
+            var hos = HospitalTableViewController()
+            hos.listaCentros = [CentroDistancia]()
+            hos.tableView(<#T##tableView: UITableView##UITableView#>, cellForRowAt: <#T##IndexPath#>)
+        }
+        //print( window!.rootViewController!) //
+        //let view = window!.rootViewController! as! HospitalTableViewController
+        //print(view)
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    */
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -48,3 +60,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+
+extension UIViewController {
+    func topMostViewController() -> UIViewController {
+        if self.presentedViewController == nil {
+            return self
+        }
+        if let navigation = self.presentedViewController as? UINavigationController {
+            return navigation.visibleViewController!.topMostViewController()
+        }
+        if let tab = self.presentedViewController as? UITabBarController {
+            if let selectedTab = tab.selectedViewController {
+                return selectedTab.topMostViewController()
+            }
+            return tab.topMostViewController()
+        }
+        return self.presentedViewController!.topMostViewController()
+    }
+}

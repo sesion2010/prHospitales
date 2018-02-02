@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import MapKit
 class HospitalTableViewController: UITableViewController {
 
     var listaCentros = [CentroDistancia]()
@@ -58,6 +58,23 @@ class HospitalTableViewController: UITableViewController {
     
     @IBAction func buttonCancel(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let latitude: CLLocationDegrees = CLLocationDegrees(listaCentros[indexPath.row].centro.lat)
+        let longitude: CLLocationDegrees = CLLocationDegrees(listaCentros[indexPath.row].centro.long)
+        
+        let regionDistance:CLLocationDistance = 1000
+        let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
+        let regionSpan = MKCoordinateRegionMakeWithDistance(coordinates, regionDistance, regionDistance)
+        let options = [
+            MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
+            MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
+        ]
+        let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = listaCentros[indexPath.row].centro.nombre
+        mapItem.openInMaps(launchOptions: options)
     }
     
     

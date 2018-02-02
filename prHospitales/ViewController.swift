@@ -86,8 +86,6 @@ class ViewController: UIViewController {
  
             print("Send")
                 hospitalViewController.listaCentros.removeAll()
-            print("Tamaño hospitalViewController : " + String(hospitalViewController.listaCentros.count))
-            print("Tamaño del  listaCentros: " + String(self.listaCentros.count))
                 hospitalViewController.listaCentros = self.listaCentros
             }
         }

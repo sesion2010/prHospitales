@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0C31C2FA2021C87700DD9779 /* fondo.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0C31C2F92021C87600DD9779 /* fondo.jpeg */; };
+		0CEE10A82023977300176CFC /* MapsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CEE10A72023977300176CFC /* MapsTableViewCell.swift */; };
 		0CFBC43F2020CEC8007104FF /* HospitalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFBC43E2020CEC7007104FF /* HospitalTableViewCell.swift */; };
 		0CFBC4412020D8B5007104FF /* Centro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFBC4402020D8B5007104FF /* Centro.swift */; };
 		0CFBC4432020DDE0007104FF /* HospitalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CFBC4422020DDE0007104FF /* HospitalTableViewController.swift */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		0C31C2F92021C87600DD9779 /* fondo.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fondo.jpeg; sourceTree = "<group>"; };
+		0CEE10A72023977300176CFC /* MapsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsTableViewCell.swift; sourceTree = "<group>"; };
 		0CFBC43E2020CEC7007104FF /* HospitalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalTableViewCell.swift; sourceTree = "<group>"; };
 		0CFBC4402020D8B5007104FF /* Centro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Centro.swift; sourceTree = "<group>"; };
 		0CFBC4422020DDE0007104FF /* HospitalTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalTableViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				3CF301E5201F4C7E00377DA2 /* Assets.xcassets */,
 				3CF301E7201F4C7E00377DA2 /* LaunchScreen.storyboard */,
 				3CF301EA201F4C7E00377DA2 /* Info.plist */,
+				0CEE10A72023977300176CFC /* MapsTableViewCell.swift */,
 			);
 			path = prHospitales;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				3CF301DF201F4C7E00377DA2 /* AppDelegate.swift in Sources */,
 				0CFBC4432020DDE0007104FF /* HospitalTableViewController.swift in Sources */,
 				0CFBC4452020E002007104FF /* CentrosFachada.swift in Sources */,
+				0CEE10A82023977300176CFC /* MapsTableViewCell.swift in Sources */,
 				0CFBC4412020D8B5007104FF /* Centro.swift in Sources */,
 				0CFBC43F2020CEC8007104FF /* HospitalTableViewCell.swift in Sources */,
 			);
