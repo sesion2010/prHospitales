@@ -12,6 +12,7 @@ class HospitalTableViewController: UITableViewController {
 
     var listaCentros = [CentroDistancia]()
     var prueba: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print(listaCentros.description)

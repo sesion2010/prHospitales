@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var buttonAmbulatorio: UIButton!
     @IBOutlet weak var buttonUrgencias: UIButton!
     @IBOutlet weak var labelTitle: UILabel!
+    
+    
     let maxCentros = 5
     var listaCentros = [CentroDistancia]()
     var location = Location.instancia

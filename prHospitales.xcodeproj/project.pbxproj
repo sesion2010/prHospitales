@@ -121,12 +121,12 @@
 				0CFBC4402020D8B5007104FF /* Centro.swift */,
 				0CFBC4422020DDE0007104FF /* HospitalTableViewController.swift */,
 				0CFBC4442020E002007104FF /* CentrosFachada.swift */,
+				0CEE10A72023977300176CFC /* MapsTableViewCell.swift */,
 				0CFBC4462020E679007104FF /* CentroDistancia.swift */,
 				3CF301E2201F4C7E00377DA2 /* Main.storyboard */,
 				3CF301E5201F4C7E00377DA2 /* Assets.xcassets */,
 				3CF301E7201F4C7E00377DA2 /* LaunchScreen.storyboard */,
 				3CF301EA201F4C7E00377DA2 /* Info.plist */,
-				0CEE10A72023977300176CFC /* MapsTableViewCell.swift */,
 			);
 			path = prHospitales;
 			sourceTree = "<group>";
